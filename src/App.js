@@ -1,16 +1,18 @@
 import React from 'react'
+import { Router as BrowserRouter, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import render from 'helpers/render-routes'
+import routes from './pages'
 
 import './tailwind.output.css'
 
-import Header from './Header'
-import Sidebar from './Sidebar'
+const history = createBrowserHistory()
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Sidebar />
-    </div>
+    <BrowserRouter history={history}>
+      <Switch>{render(routes)}</Switch>
+    </BrowserRouter>
   )
 }
 
