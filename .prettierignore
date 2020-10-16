@@ -1,0 +1,4 @@
+*.html
+*.htm
+*.css
+node_modules
