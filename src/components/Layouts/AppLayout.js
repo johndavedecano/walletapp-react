@@ -5,11 +5,13 @@ import Sidebar from 'components/Sidebar'
 
 const AppLayout = ({ children }) => {
   return (
-    <div>
+    <>
       <Header />
-      <main>{children}</main>
+      <div className="min-h-screen p-5 bg-gray-50 dark:bg-gray-900">
+        {children}
+      </div>
       <Sidebar />
-    </div>
+    </>
   )
 }
 

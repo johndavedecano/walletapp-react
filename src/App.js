@@ -1,18 +1,29 @@
 import React from 'react'
-import { Router as BrowserRouter, Switch } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
-import render from 'helpers/render-routes'
-import routes from './pages'
+
+import { Switch, Route } from 'wouter'
+
+import { AppStateProvider } from 'AppContext'
+
+import AppLayout from 'components/Layouts/AppLayout'
+import Home from 'pages/home'
+import Login from 'pages/login'
+import NotFound from 'pages/notfound'
+import Register from 'pages/register'
 
 import './tailwind.output.css'
 
-const history = createBrowserHistory()
-
 function App() {
   return (
-    <BrowserRouter history={history}>
-      <Switch>{render(routes)}</Switch>
-    </BrowserRouter>
+    <AppStateProvider>
+      <AppLayout>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="" component={NotFound} />
+        </Switch>
+      </AppLayout>
+    </AppStateProvider>
   )
 }
 
